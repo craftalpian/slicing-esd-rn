@@ -63,7 +63,22 @@ export default () => {
               width: 55,
               backgroundColor: '#15162F',
               borderRadius: 100,
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
             }}>
+            <View
+              style={{
+                backgroundColor: '#FF2929',
+                height: 8,
+                width: 8,
+                borderRadius: 100,
+                position: 'absolute',
+                top: 16,
+                right: 18,
+                zIndex: 999,
+              }}
+            />
             <Notification size={24} color="#FFF" />
           </View>
         </View>
