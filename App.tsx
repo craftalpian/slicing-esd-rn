@@ -11,12 +11,30 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-import {Building4, Notification, SearchNormal} from 'iconsax-react-native';
+import {
+  Building4,
+  Convert3DCube,
+  Notification,
+  SearchNormal,
+  Tree,
+} from 'iconsax-react-native';
 
 const categories = [
-  {title: 'City', amount: '829 house'},
-  {title: 'Nature', amount: '54,293 house'},
-  {title: 'Apartment', amount: '221 house'},
+  {
+    title: 'City',
+    amount: '829 house',
+    icon: <Building4 size={24} color="#FFF" />,
+  },
+  {
+    title: 'Nature',
+    amount: '54,293 house',
+    icon: <Tree size={24} color="#FFF" />,
+  },
+  {
+    title: 'Apartment',
+    amount: '221 house',
+    icon: <Convert3DCube size={24} color="#FFF" />,
+  },
 ];
 
 export default () => {
@@ -65,9 +83,12 @@ export default () => {
               paddingRight: 24,
             }}
             horizontal={true}
-            renderItem={({item: {amount, title}, index}) => (
+            renderItem={({item: {amount, title, icon}, index}) => (
               <TouchableHighlight
-                onPress={() => Alert.alert('diklik')}
+                onPress={() =>
+                  Alert.alert(`Kategori ${title} memiliki ${amount}`)
+                }
+                underlayColor={'#FFF'}
                 key={index}>
                 <View
                   style={{
@@ -88,10 +109,27 @@ export default () => {
                       height: 60,
                       width: 60,
                     }}>
-                    <Building4 size={24} color="#FFF" />
+                    {icon}
                   </View>
-                  <View>
-                    <Text style={{color: '#FFF', fontFamily: 'Poppins-SemiBold', fontSize: 16}}>{title}</Text>
+                  <View style={{marginTop: 16}}>
+                    <Text
+                      style={{
+                        color: '#FFF',
+                        fontFamily: 'Poppins-SemiBold',
+                        fontSize: 16,
+                        textAlign: 'center',
+                      }}>
+                      {title}
+                    </Text>
+                    <Text
+                      style={{
+                        color: '#61647D',
+                        fontFamily: 'Poppins-Regular',
+                        fontSize: 14,
+                        textAlign: 'center',
+                      }}>
+                      {amount}
+                    </Text>
                   </View>
                 </View>
               </TouchableHighlight>
