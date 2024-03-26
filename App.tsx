@@ -5,9 +5,10 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
   View,
 } from 'react-native';
-import {Notification} from 'iconsax-react-native';
+import {Notification, SearchNormal} from 'iconsax-react-native';
 
 export default () => {
   return (
@@ -37,12 +38,31 @@ export default () => {
             <Notification size={24} color="#FFF" />
           </View>
         </View>
+        {/* Search */}
+        <View style={styles.search_wrapper}>
+          <SearchNormal size={24} color="#FFF" />
+          <TextInput
+            style={styles.search}
+            placeholder="Search by city or agent"
+            placeholderTextColor={'#61647D'}
+          />
+        </View>
       </SafeAreaView>
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  search_wrapper: {
+    backgroundColor: '#15162F',
+    borderRadius: 100,
+    marginTop: 30,
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingVertical: 6,
+  },
+  search: {marginLeft: 16, fontFamily: 'Poppins-Regular'},
   main: {
     flex: 1,
     backgroundColor: '#05051E',
