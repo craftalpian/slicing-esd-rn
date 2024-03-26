@@ -1,14 +1,23 @@
 import React from 'react';
 import {
+  Alert,
+  FlatList,
   Image,
   SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
+  TouchableHighlight,
   View,
 } from 'react-native';
-import {Notification, SearchNormal} from 'iconsax-react-native';
+import {Building4, Notification, SearchNormal} from 'iconsax-react-native';
+
+const categories = [
+  {title: 'City', amount: '829 house'},
+  {title: 'Nature', amount: '54,293 house'},
+  {title: 'Apartment', amount: '221 house'},
+];
 
 export default () => {
   return (
@@ -47,6 +56,48 @@ export default () => {
             placeholderTextColor={'#61647D'}
           />
         </View>
+        {/* Categories */}
+        <View style={{marginTop: 20}}>
+          <FlatList
+            data={categories}
+            contentContainerStyle={{
+              marginLeft: 24,
+              paddingRight: 24,
+            }}
+            horizontal={true}
+            renderItem={({item: {amount, title}, index}) => (
+              <TouchableHighlight
+                onPress={() => Alert.alert('diklik')}
+                key={index}>
+                <View
+                  style={{
+                    width: 130,
+                    height: 161,
+                    backgroundColor: '#15162F',
+                    marginRight: 18,
+                    borderRadius: 16,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <View
+                    style={{
+                      borderRadius: 100,
+                      backgroundColor: '#640EF1',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      height: 60,
+                      width: 60,
+                    }}>
+                    <Building4 size={24} color="#FFF" />
+                  </View>
+                  <View>
+                    <Text style={{color: '#FFF', fontFamily: 'Poppins-SemiBold', fontSize: 16}}>{title}</Text>
+                  </View>
+                </View>
+              </TouchableHighlight>
+            )}
+          />
+        </View>
       </SafeAreaView>
     </>
   );
@@ -61,17 +112,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
     paddingVertical: 6,
+    marginHorizontal: 24,
   },
   search: {marginLeft: 16, fontFamily: 'Poppins-Regular'},
   main: {
     flex: 1,
     backgroundColor: '#05051E',
-    paddingHorizontal: 24,
     paddingVertical: 30,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: 24,
   },
   profile_image: {
     backgroundColor: '#15162F',
