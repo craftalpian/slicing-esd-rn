@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, SafeAreaView, StatusBar, Text, View} from 'react-native';
+import {Notification} from 'iconsax-react-native';
 
 export default () => {
   return (
@@ -13,8 +14,11 @@ export default () => {
           paddingVertical: 30,
         }}>
         {/* Header */}
-        <View style={{backgroundColor: 'red', flexDirection: 'row'}}>
-          {/* <View style={{backgroundColor: 'green', flex: 1, height: 60}}></View> */}
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
           <View
             style={{
               backgroundColor: '#15162F',
@@ -35,8 +39,33 @@ export default () => {
               }}
             />
           </View>
-          <View style={{backgroundColor: 'blue', flex: 1, height: 60}}></View>
-          <View style={{backgroundColor: 'yellow', flex: 1, height: 60}}></View>
+          <View style={{flex: 1, marginHorizontal: 12}}>
+            <Text
+              style={{
+                fontFamily: 'Poppins-SemiBold',
+                fontSize: 18,
+                color: '#FFF',
+              }}>
+              Shayna Wy
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'Poppins-Regular',
+                fontSize: 14,
+                color: '#7C7C7C',
+              }}>
+              Customer
+            </Text>
+          </View>
+          <View
+            style={{
+              height: 55,
+              width: 55,
+              backgroundColor: '#15162F',
+              borderRadius: 100,
+            }}>
+            <Notification size={24} color="#FFF" />
+          </View>
         </View>
       </SafeAreaView>
     </>
