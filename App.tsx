@@ -37,6 +37,23 @@ const categories = [
   },
 ];
 
+const assets = [
+  {
+    image_url:
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuc2lvbnxlbnwwfHwwfHx8MA%3D%3D',
+    title: 'Rumahnya Angga',
+    short_description: '9,301 sqft • House • Rent',
+    price: '$69,000',
+  },
+  {
+    image_url:
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuc2lvbnxlbnwwfHwwfHx8MA%3D%3D',
+    title: 'Rumahnya Angga',
+    short_description: '9,301 sqft • House • Rent',
+    price: '$69,000',
+  },
+];
+
 export default () => {
   return (
     <>
@@ -88,51 +105,102 @@ export default () => {
                 onPress={() =>
                   Alert.alert(`Kategori ${title} memiliki ${amount}`)
                 }
-                underlayColor={'#FFF'}
                 key={index}>
-                <View
-                  style={{
-                    width: 130,
-                    height: 161,
-                    backgroundColor: '#15162F',
-                    marginRight: 18,
-                    borderRadius: 16,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                  <View
-                    style={{
-                      borderRadius: 100,
-                      backgroundColor: '#640EF1',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      height: 60,
-                      width: 60,
-                    }}>
-                    {icon}
-                  </View>
+                <View style={styles.card}>
+                  <View style={styles.icon}>{icon}</View>
                   <View style={{marginTop: 16}}>
-                    <Text
-                      style={{
-                        color: '#FFF',
-                        fontFamily: 'Poppins-SemiBold',
-                        fontSize: 16,
-                        textAlign: 'center',
-                      }}>
-                      {title}
-                    </Text>
-                    <Text
-                      style={{
-                        color: '#61647D',
-                        fontFamily: 'Poppins-Regular',
-                        fontSize: 14,
-                        textAlign: 'center',
-                      }}>
-                      {amount}
-                    </Text>
+                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.amount}>{amount}</Text>
                   </View>
                 </View>
               </TouchableHighlight>
+            )}
+          />
+        </View>
+        {/* Staff Picks */}
+        <View style={{marginTop: 30}}>
+          <Text
+            style={{
+              fontFamily: 'Poppins-SemiBold',
+              fontSize: 16,
+              color: '#FFF',
+              textAlign: 'left',
+              marginBottom: 8,
+              marginLeft: 24,
+            }}>
+            Staff Picks
+          </Text>
+          <FlatList
+            data={assets}
+            contentContainerStyle={{
+              marginLeft: 24,
+              paddingRight: 24,
+            }}
+            horizontal={true}
+            renderItem={({
+              item: {image_url, price, short_description, title},
+              index,
+            }) => (
+              <View
+                key={index}
+                style={{
+                  width: 230,
+                  height: 254,
+                  borderRadius: 16,
+                  marginRight: 18,
+                  backgroundColor: '#15162F',
+                }}>
+                <Image
+                  resizeMode="cover"
+                  source={{uri: image_url}}
+                  style={{
+                    height: 127,
+                    width: 230,
+                    borderTopLeftRadius: 16,
+                    borderTopRightRadius: 16,
+                  }}
+                />
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    paddingHorizontal: 16,
+                  }}>
+                  <Text
+                    style={{
+                      color: '#FFF',
+                      fontFamily: 'Poppins-Bold',
+                      fontSize: 18,
+                    }}>
+                    {title}
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: 'Poppins-Regular',
+                      fontSize: 14,
+                      color: '#61647D',
+                      marginVertical: 6,
+                    }}>
+                    {short_description}
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: 'Poppins-Regular',
+                      fontSize: 14,
+                      color: '#61647D',
+                    }}>
+                    <Text
+                      style={{
+                        color: '#C7A5FF',
+                        fontFamily: 'Poppins-Bold',
+                        fontSize: 16,
+                      }}>
+                      {price}
+                    </Text>
+                    /month
+                  </Text>
+                </View>
+              </View>
             )}
           />
         </View>
@@ -142,6 +210,35 @@ export default () => {
 };
 
 const styles = StyleSheet.create({
+  title: {
+    color: '#FFF',
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  amount: {
+    color: '#61647D',
+    fontFamily: 'Poppins-Regular',
+    fontSize: 14,
+    textAlign: 'center',
+  },
+  card: {
+    width: 130,
+    height: 161,
+    backgroundColor: '#15162F',
+    marginRight: 18,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    borderRadius: 100,
+    backgroundColor: '#640EF1',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
+    width: 60,
+  },
   search_wrapper: {
     backgroundColor: '#15162F',
     borderRadius: 100,
